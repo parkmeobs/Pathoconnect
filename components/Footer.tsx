@@ -1,15 +1,15 @@
 "use client";
-import Facebook from "@/assets/images/facebook.png";
-import Instagram from "@/assets/images/instagram.png";
-import Linkedin from "@/assets/images/linkedin.png";
-import Youtube from "@/assets/images/youtube.png";
+import Facebook from "../assets/images/facebook.png";
+import Instagram from "../assets/images/instagram.png";
+import Linkedin from "../assets/images/linkedin.png";
+import YouTube from "../assets/images/youtube.png";
 import Image from "next/image";
 
 const socialItems = [
   { label: "Facebook", image: Facebook, href: "/product/app" },
   { label: "Instagram", image: Instagram, href: "/product/web" },
   { label: "Linkedin", image: Linkedin, href: "/product/ai" },
-  { label: "YouTube", image: Youtube, href: "/product/ai" },
+  { label: "YouTube", image: YouTube, href: "/product/ai" },
 ];
 export default function Footer() {
   return (

@@ -26,13 +26,13 @@ export function CustomItems({
           href={route}
         //   target="_blank"
           className={`hover:text-blue-600 ${
-            isActive ? "text-[#e85c41] font-semibold" : ""
+            isActive ? "text-[#e85c41] font-semibold" : "text-[#1b2b65] font-medium"
           }`}
         >
           {title}
         </Link>
       ) : (
-        <span className="hover:text-blue-600">{title}</span>
+        <span className="hover:text-blue-600 text-[#1b2b65]">{title}</span>
       )}
 
       <div className="absolute left-0 top-full mt-2 invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-white shadow-lg rounded-md min-w-[180px] transition-all duration-200">
@@ -84,11 +84,11 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 left-0 w-full h-20 bg-white shadow z-50">
-      <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-6 py-0 ">
+    <header className="fixed top-0 left-0 w-full h-23 bg-white shadow z-50">
+      <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-0 py-0 ">
         {/* Logo */}
         <Link href="/">
-          <Image src={PathoLogo} alt="Logo" width={180} height={50} />
+          <Image src={PathoLogo} alt="Logo" width={256} height={50} />
         </Link>
 
         {/* Menu */}

@@ -4,21 +4,31 @@ import Image from "next/image";
 import Link from "next/link";
 import PathoLogo from "@/assets/images/PathoLogo.png";
 import Phone from "@/assets/images/Phone.png";
-import { log } from "console";
+import { usePathname } from "next/navigation";
 
 export function CustomItems({
   title,
   items = [],
-  route,
+  route = "",
+  pathname,
 }: {
   title: string;
   items?: { label: string; href: string }[];
-  route: string;
+  route?: string;
+  pathname: string;
 }) {
+  const isActive = route && pathname === route;
+
   return (
     <div className="relative group cursor-pointer h-full bg-white items-center flex">
       {route ? (
-        <Link href={route} target="_blank" className="hover:text-blue-600">
+        <Link
+          href={route}
+        //   target="_blank"
+          className={`hover:text-blue-600 ${
+            isActive ? "text-[#e85c41] font-semibold" : ""
+          }`}
+        >
           {title}
         </Link>
       ) : (
@@ -71,6 +81,8 @@ const integrationItems = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="fixed top-0 left-0 w-full h-20 bg-white shadow z-50">
       <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-6 py-0 ">
@@ -82,12 +94,24 @@ export default function Header() {
         {/* Menu */}
         <nav className="flex gap-8 text-gray-800 h-full items-center font-medium">
           {/* Home */}
-          <CustomItems title="Home" route="/" />
-          <CustomItems title="Product" items={productItems} />
-          <CustomItems title="About Us" />
-          <CustomItems title="Blog" items={blogItems} />
-          <CustomItems title="Integration" items={integrationItems} />
-          <CustomItems title="Contact Us" route="/contact-us" />
+          <CustomItems title="Home" route="/" pathname={pathname} />
+          <CustomItems
+            title="Product"
+            items={productItems}
+            pathname={pathname}
+          />
+          <CustomItems title="About Us" pathname={pathname} />
+          <CustomItems title="Blog" items={blogItems} pathname={pathname} />
+          <CustomItems
+            title="Integration"
+            items={integrationItems}
+            pathname={pathname}
+          />
+          <CustomItems
+            title="Contact Us"
+            route="/contact-us"
+            pathname={pathname}
+          />
         </nav>
         <Link href="/">
           <Image src={Phone} alt="Logo" width={40} height={40} />

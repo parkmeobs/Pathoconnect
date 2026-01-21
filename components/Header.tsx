@@ -18,7 +18,7 @@ export function CustomItems({
   return (
     <div className="relative group cursor-pointer h-full bg-white items-center flex">
       {route ? (
-        <Link href={route} className="hover:text-blue-600">
+        <Link href={route} target="_blank" className="hover:text-blue-600">
           {title}
         </Link>
       ) : (

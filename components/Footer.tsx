@@ -2,14 +2,14 @@
 import Facebook from "@/assets/images/Facebook.png";
 import Instagram from "@/assets/images/Instagram.png";
 import Linkedin from "@/assets/images/Linkedin.png";
-import YouTube from "@/assets/images/Youtube.png";
+import Youtube from "@/assets/images/Youtube.png";
 import Image from "next/image";
 
 const socialItems = [
   { label: "Facebook", image: Facebook, href: "/product/app" },
   { label: "Instagram", image: Instagram, href: "/product/web" },
   { label: "Linkedin", image: Linkedin, href: "/product/ai" },
-  { label: "YouTube", image: YouTube, href: "/product/ai" },
+  { label: "YouTube", image: Youtube, href: "/product/ai" },
 ];
 export default function Footer() {
   return (

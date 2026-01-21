@@ -1,8 +1,12 @@
 "use client";
-import Facebook from "../assets/images/facebook.png";
-import Instagram from "../assets/images/instagram.png";
-import Linkedin from "../assets/images/linkedin.png";
-import YouTube from "../assets/images/youtube.png";
+// import Facebook from "../assets/images/facebook.png";
+// import Instagram from "../assets/images/instagram.png";
+// import Linkedin from "../assets/images/linkedin.png";
+// import YouTube from "../assets/images/youtube.png";
+import Facebook from "../assets/images/Facebook.png"
+import Instagram from "../assets/images/Instagram.png"
+import Linkedin from "../assets/images/Linkedin.png"
+import YouTube from "../assets/images/Youtube.png"
 import Image from "next/image";
 
 const socialItems = [

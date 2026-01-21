@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import PathoLogo from "@/assets/images/pathoLogo.png";
-import Phone from "@/assets/images/phone.png";
+import PathoLogo from "../assets/images/PathoLogo.png";
+import Phone from "../assets/images/Phone.png";
 import { usePathname } from "next/navigation";
 
 export function CustomItems({

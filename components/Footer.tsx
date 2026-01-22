@@ -5,9 +5,10 @@ import Facebook from "../assets/images/Facebook.png";
 import Instagram from "../assets/images/Instagram.png";
 import Linkedin from "../assets/images/Linkedin.png";
 import YouTube from "../assets/images/Youtube.png";
+import Link from "next/link";
 
 const socialItems = [
-  { label: "Facebook", image: Facebook, href: "#" },
+  { label: "Facebook", image: Facebook, href: "https://www.facebook.com/people/Observance-Solutions/100067819001609/" },
   { label: "Instagram", image: Instagram, href: "#" },
   { label: "Linkedin", image: Linkedin, href: "#" },
   { label: "YouTube", image: YouTube, href: "#" },
@@ -29,6 +30,11 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex justify-center md:justify-start gap-3 mt-3">
             {socialItems.map((item, index) => (
+              <Link
+                key={index}
+                href={item.href}>
+
+               
               <Image
                 key={index}
                 src={item.image}
@@ -37,6 +43,7 @@ export default function Footer() {
                 height={40}
                 className="cursor-pointer hover:scale-110 transition rounded bg-white p-2"
               />
+               </Link>
             ))}
           </div>
 

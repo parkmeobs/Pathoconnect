@@ -97,30 +97,24 @@ const productItems = [
   { label: "AI", href: "/product/ai" },
 ];
 
-const slugify = (text: string) =>
-  text
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+const aboutItems = [
+  { label: "Company", href: "/about/company" },
+  { label: "Team", href: "/about/team" },
+  { label: "Careers", href: "/about/career" },
+];
 
 const blogItems = [
   {
     label:
       "Phlebotomy App and Sample Collection Software for Clinical Pathology",
+    href: "/blog/tech",
   },
   {
     label: "Transform Lab Management with Our Advanced CRM Dashboard",
+    href: "/blog/business",
   },
-  {
-    label: "Online Lab Test Booking Application",
-  },
-].map((item) => ({
-  ...item,
-  slug: slugify(item.label),
-  href: `/blog/${slugify(item.label)}`,
-}));
-
+  { label: "Online Lab Test Booking Application", href: "/blog/design" },
+];
 const integrationItems = [
   { label: "Software Integration", href: "/blog/tech" },
   { label: "Device Integration", href: "/blog/business" },
@@ -136,7 +130,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/">
           <Image
-            src={PathoLogo}
+            src={Phone}
             alt="Logo"
             width={180}
             height={40}
@@ -147,12 +141,8 @@ export default function Header() {
         {/* Desktop Menu */}
         <nav className="hidden md:flex gap-8 items-center">
           <CustomItems title="Home" route="/" pathname={pathname} />
-          <CustomItems
-            title="Product"
-            items={productItems}
-            pathname={pathname}
-          />
-          <CustomItems title="About Us" route="/about-us" pathname={pathname} />
+          <CustomItems title="Product" items={productItems} pathname={pathname} />
+          <CustomItems title="About Us"  route="/about-us" pathname={pathname} />
           <CustomItems title="Blog" items={blogItems} pathname={pathname} />
           <CustomItems
             title="Integration"
@@ -176,6 +166,7 @@ export default function Header() {
           className="md:hidden text-3xl border border-gray-300 w-15  square-full rounded"
           onClick={() => setMenuOpen(!menuOpen)}
         >
+          
           <i className="bi bi-list text-[#1b2b65] "></i>
         </button>
       </div>
@@ -223,3 +214,4 @@ export default function Header() {
     </header>
   );
 }
+

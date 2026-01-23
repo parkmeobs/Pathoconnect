@@ -1,6 +1,6 @@
 import Image from "next/image";
-import BackBlurImage from "../../assets/images/BackBlurImage.png";
-import ContactPerson from "../../assets/images/ContactPerson.png";
+import BackBlurImage from "@/assets/images/BackBlurImage.png";
+import ContactPerson from "@/assets/images/ContactPerson.png";
 import ContactSection from "./ContactSection";
 
 export default function ContactUs() {

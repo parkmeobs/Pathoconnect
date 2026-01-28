@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
-import { users } from "@/models/User"
+import User from "@/models/User"
 
 const JWT_SECRET = "your_secret_key"
 
 export async function POST(req: Request) {
   const { email, password } = await req.json()
 
-  const user = users.find(u => u.email === email)
+  const user = User.find(u => u.email === email)
   if (!user) {
     return NextResponse.json({ message: "Invalid credentials" }, { status: 401 })
   }

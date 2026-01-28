@@ -3,22 +3,29 @@ import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import User from "@/models/User"
 
-const JWT_SECRET = "your_secret_key"
-
 export async function POST(req: Request) {
-  const { email, password } = await req.json()
+  try {
+    const { email, password } = await req.json()
 
-  const user = User.find(u => u.email === email)
-  if (!user) {
-    return NextResponse.json({ message: "Invalid credentials" }, { status: 401 })
+    const user = await User.findOne({ email })
+    if (!user) {
+      return NextResponse.json({ message: "Invalid credentials" }, { status: 401 })
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password)
+    if (!isMatch) {
+      return NextResponse.json({ message: "Invalid credentials" }, { status: 401 })
+    }
+
+    const token = jwt.sign(
+      { userId: user._id },
+      process.env.JWT_SECRET as string,
+      { expiresIn: "7d" }
+    )
+
+    return NextResponse.json({ token }, { status: 200 })
+
+  } catch (error) {
+    return NextResponse.json({ message: "Server error" }, { status: 500 })
   }
-
-  const isMatch = await bcrypt.compare(password, user.password)
-  if (!isMatch) {
-    return NextResponse.json({ message: "Invalid credentials" }, { status: 401 })
-  }
-
-  const token = jwt.sign({ email: user.email }, JWT_SECRET, { expiresIn: "1d" })
-
-  return NextResponse.json({ message: "Login successful", token })
 }

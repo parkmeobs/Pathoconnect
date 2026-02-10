@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import PathoLogo from "../assets/images/PathoLogo.png";
 import Phone from "../assets/images/Phone.png";
+import LogoutImage from "../assets/images/LogoutImage.png";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 
 function CustomItems({
   title,
@@ -129,6 +132,15 @@ const integrationItems = [
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+
+  const handleLogout = async () => {
+  await fetch("/api/auth/logout", {
+    method: "POST",
+  });
+  router.push("/login");
+  router.refresh();
+};
 
   return (
     <header className="fixed top-0 left-0 w-full py-1.5 bg-white shadow z-50">
@@ -170,6 +182,12 @@ export default function Header() {
         <div className="hidden md:block">
           <Image src={Phone} alt="Phone" width={36} height={36} />
         </div>
+        <button
+          onClick={handleLogout}
+          className="hidden md:flex items-center justify-center bg-[#1b2b65] p-2 rounded-full hover:bg-[#162254] transition cursor-pointer"
+        >
+          <Image src={LogoutImage} alt="logout" width={20} height={20} />
+        </button>
 
         {/* Hamburger */}
         <button

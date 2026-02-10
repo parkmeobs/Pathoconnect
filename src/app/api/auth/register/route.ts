@@ -1,22 +1,39 @@
 import { connectDB } from "@/lib/mongodb";
 import User from "@/models/User";
 
+import bcrypt from "bcryptjs";
+
 export async function POST(req) {
   try {
-    await connectDB(); // ✅ only this is needed
+    await connectDB();
 
-    const body = await req.json();
-    const { name, email, password } = body;
+    const { name, email, password } = await req.json();
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return new Response(JSON.stringify({ error: "User already exists" }), { status: 400 });
+      return new Response(
+        JSON.stringify({ message: "User already exists" }),
+        { status: 400 }
+      );
     }
 
-    const user = await User.create({ name, email, password });
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    return new Response(JSON.stringify({ success: true, user }), { status: 201 });
+    const user = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
+
+    return new Response(
+      JSON.stringify({ message: "Registration successful" }),
+      { status: 201 }
+    );
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    return new Response(
+      JSON.stringify({ message: error.message }),
+      { status: 500 }
+    );
   }
 }
+

@@ -1,36 +1,16 @@
-"use client"
-import { useState } from "react"
+import { cookies } from "next/headers"
+import { decrypt } from "@/lib/session"
+import { redirect } from "next/navigation"
+import LoginForm from "./LoginForm"
 
-export default function LoginPage() {
-  const [form, setForm] = useState({ email: "", password: "" })
-  const [message, setMessage] = useState("")
+export default async function LoginPage() {
+  const cookieStore = await cookies()
+  const cookie = cookieStore.get("session")?.value
+    const session = cookie ? await decrypt(cookie) : null
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    const res = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    })
-
-    const data = await res.json()
-    setMessage(data.message)
-
-    if (data.token) {
-      localStorage.setItem("token", data.token)
-    }
+  if (session?.userId) {
+    redirect("/")
   }
 
-  return (
-    <div className="flex flex-col items-center justify-center h-screen gap-4">
-      <h1 className="text-2xl font-bold">Login</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-72">
-        <input placeholder="Email" type="email" onChange={e => setForm({ ...form, email: e.target.value })} className="border p-2" />
-        <input placeholder="Password" type="password" onChange={e => setForm({ ...form, password: e.target.value })} className="border p-2" />
-        <button className="bg-black text-white p-2">Login</button>
-      </form>
-      <p>{message}</p>
-    </div>
-  )
+  return <LoginForm />
 }

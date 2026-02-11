@@ -90,11 +90,13 @@ function CustomItems({
           >
             {title}
           </span>
-          <i className={`bi bi-chevron-down  p-2 ${
+          <i
+            className={`bi bi-chevron-down  p-2 ${
               isActive
                 ? "text-[#e85c41] font-semibold"
                 : "text-[#1b2b65] font-medium"
-            }`}></i>
+            }`}
+          ></i>
         </div>
       )}
 
@@ -118,6 +120,15 @@ function CustomItems({
     </div>
   );
 }
+
+const phoneNumber = [
+  {
+    label: "USA : +1 (347) 839-1487",
+  },
+  {
+    label: "India : +91 9910272266",
+  },
+];
 
 const slugify = (text: string) =>
   text
@@ -222,8 +233,22 @@ export default function Header() {
         </nav>
 
         {/* Phone Icon (desktop) */}
-        <div className="hidden md:block">
-          <Image src={Phone} alt="Phone" width={36} height={36} />
+        <div className="relative group cursor-pointer h-full  flex items-center">
+          <div className="hidden md:block">
+            <Image src={Phone} alt="Phone" width={36} height={36} />
+          </div>
+          {phoneNumber.length > 0 && (
+            <div className="absolute left-0 top-full mt-2 invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-white shadow-lg rounded-md min-w-[220px] transition-all duration-200">
+              {phoneNumber.map((item, index) => (
+                <span
+                  key={index}
+                  className={`block px-4 py-2 hover:bg-gray-100 ${"text-[#1b2b65] font-normal"}`}
+                >
+                  {item.label}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
         <button
           onClick={handleLogout}

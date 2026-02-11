@@ -12,7 +12,7 @@ export function BannerSection() {
         {/* Text */}
         <div className="flex flex-col gap-4 text-center md:text-left">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-black leading-snug">
-            Simplifying <span className="text-[#e85c41]">Phlebotomy</span>,
+            Simplifying <span className="text-[var(--color-primary)]">Phlebotomy</span>,
             Empowering Diagnostics
           </h1>
 
@@ -21,7 +21,7 @@ export function BannerSection() {
             and operational efficiency for labs and diagnostic centers.
           </p>
 
-          <button className="max-w-3xs mt-4 h-12 px-6 rounded-full font-bold border border-[#e85c41] bg-[#e85c41] text-white hover:bg-white hover:text-[#e85c41] transition w-full sm:w-auto mx-auto md:mx-0">
+          <button className="max-w-3xs mt-4 h-12 px-6 rounded-full font-bold border border-primary bg-[#e85c41] text-white hover:bg-white hover:text-[#e85c41] transition w-full sm:w-auto mx-auto md:mx-0">
             Request a Demo
           </button>
         </div>

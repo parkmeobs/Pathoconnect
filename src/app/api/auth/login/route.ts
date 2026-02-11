@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import User from "@/models/User";
 import { connectDB } from "@/lib/mongodb";
-import { createSession } from "@/lib/session";
+import { createSessionToken } from "@/lib/session"
 
 export async function POST(req: Request) {
   try {
@@ -25,26 +25,32 @@ export async function POST(req: Request) {
       );
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password)
     if (!isMatch) {
-      return NextResponse.json(
-        { message: "Invalid credentials" },
-        { status: 401 }
-      );
+      return NextResponse.json({ message: "Invalid credentials" }, { status: 401 })
     }
 
-    // ✅ CREATE SESSION (JOSE)
-    await createSession(user._id.toString());
+    // ✅ create token
+    const token = await createSessionToken(user._id.toString())
 
-    return NextResponse.json(
+    const response = NextResponse.json(
       { message: "Login successful" },
       { status: 200 }
-    );
+    )
+
+    // ✅ attach cookie to response
+    response.cookies.set("session", token, {
+      httpOnly: true,
+      secure: true, // Vercel is HTTPS
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7,
+    })
+
+    return response
+
   } catch (error) {
-    console.error("LOGIN ERROR 👉", error);
-    return NextResponse.json(
-      { message: "Server error" },
-      { status: 500 }
-    );
+    console.error(error)
+    return NextResponse.json({ message: "Server error" }, { status: 500 })
   }
 }

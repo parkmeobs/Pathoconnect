@@ -26,8 +26,6 @@ export default async function Home() {
       <main className="flex flex-1 flex-col pt-22  bg-white dark:bg-white">
         <BannerSection />
         <FaqSection />
-
-   
       </main>
     </div>
   );

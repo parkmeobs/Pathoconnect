@@ -3,7 +3,7 @@ import User from "@/models/User";
 
 import bcrypt from "bcryptjs";
 
-export async function POST(req) {
+export async function POST(req: Request) {
   try {
     await connectDB();
 

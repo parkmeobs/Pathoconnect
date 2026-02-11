@@ -4,6 +4,25 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+    /* --color-primary: #e85c41;
+  --color-lightOrange: #ffece7; */
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e40af; /* Your blue color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e85c41; /* Hover color */
 }
 
 @theme inline {
@@ -11,7 +30,16 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
 }
+@theme {
+  /* --color-primary: var(--primary);
+  --color-lightOrange:var(--background); */
+  --color-primary: #e85c41;
+  --color-lightOrange: #ffece7;
+  --color-blue:#1b2b65
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -39,4 +67,10 @@ body {
 
 .animate-slideUp {
   animation: slideUp 0.25s ease-out;
+}
+.abhishek-singh{
+  text-decoration: underline !important;
+}
+#anurag{
+
 }

@@ -9,23 +9,29 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-
 function CustomItems({
   title,
   items = [],
   route = "",
+  dummyRoute = "",
   pathname,
   mobile = false,
   onClick,
+  selectedItem,
 }: {
   title: string;
-  items?: { label: string; href: string }[];
+  items?: { label: string; href: string; slug: string }[];
   route?: string;
+  dummyRoute?: string;
   pathname: string;
   mobile?: boolean;
   onClick?: () => void;
+  selectedItem?: string;
 }) {
-  const isActive = route && pathname === route;
+  console.log("routetttt", route);
+  console.log("pathnametttt", pathname);
+  const isActive =
+    (route && pathname === route) || (dummyRoute && pathname === dummyRoute);
 
   if (mobile) {
     return (
@@ -74,7 +80,22 @@ function CustomItems({
           {title}
         </Link>
       ) : (
-        <span className="hover:text-blue-600 text-[#1b2b65]">{title}</span>
+        <div className="">
+          <span
+            className={`hover:text-blue-600 ${
+              isActive
+                ? "text-[#e85c41] font-semibold"
+                : "text-[#1b2b65] font-medium"
+            }`}
+          >
+            {title}
+          </span>
+          <i className={`bi bi-chevron-down  p-2 ${
+              isActive
+                ? "text-[#e85c41] font-semibold"
+                : "text-[#1b2b65] font-medium"
+            }`}></i>
+        </div>
       )}
 
       {items.length > 0 && (
@@ -83,7 +104,11 @@ function CustomItems({
             <Link
               key={index}
               href={item.href}
-              className="block px-4 py-2 hover:bg-gray-100 text-gray-600"
+              className={`block px-4 py-2 hover:bg-gray-100 ${
+                item.slug === selectedItem
+                  ? "text-[#e85c41] font-medium"
+                  : "text-[#1b2b65] font-normal"
+              }`}
             >
               {item.label}
             </Link>
@@ -94,18 +119,20 @@ function CustomItems({
   );
 }
 
-const productItems = [
-  { label: "App", href: "/product/app" },
-  { label: "Web", href: "/product/web" },
-  { label: "AI", href: "/product/ai" },
-];
-
 const slugify = (text: string) =>
   text
     .toLowerCase()
     .trim()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
+
+const productItems = [{ label: "App" }, { label: "Web" }, { label: "AI" }].map(
+  (item) => ({
+    ...item,
+    slug: slugify(item.label),
+    href: `/product/${slugify(item.label)}`,
+  }),
+);
 
 const blogItems = [
   {
@@ -124,10 +151,16 @@ const blogItems = [
   href: `/blog/${slugify(item.label)}`,
 }));
 
+console.log(blogItems);
+
 const integrationItems = [
-  { label: "Software Integration", href: "/blog/tech" },
-  { label: "Device Integration", href: "/blog/business" },
-];
+  { label: "Software Integration" },
+  { label: "Device Integration" },
+].map((item) => ({
+  ...item,
+  slug: slugify(item.label),
+  href: `/integration/${slugify(item.label)}`,
+}));
 
 export default function Header() {
   const pathname = usePathname();
@@ -135,12 +168,12 @@ export default function Header() {
   const router = useRouter();
 
   const handleLogout = async () => {
-  await fetch("/api/auth/logout", {
-    method: "POST",
-  });
-  router.push("/login");
-  router.refresh();
-};
+    await fetch("/api/auth/logout", {
+      method: "POST",
+    });
+    router.push("/login");
+    router.refresh();
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full py-1.5 bg-white shadow z-50">
@@ -162,14 +195,24 @@ export default function Header() {
           <CustomItems
             title="Product"
             items={productItems}
-            pathname={pathname}
+            dummyRoute={"/product"}
+            pathname={`/${pathname.split("/")[1]}`}
+            selectedItem={pathname.split("/")[2]}
           />
           <CustomItems title="About Us" route="/about-us" pathname={pathname} />
-          <CustomItems title="Blog" items={blogItems} pathname={pathname} />
+          <CustomItems
+            title="Blog"
+            items={blogItems}
+            dummyRoute={"/blog"}
+            pathname={`/${pathname.split("/")[1]}`}
+            selectedItem={pathname.split("/")[2]}
+          />
           <CustomItems
             title="Integration"
+            dummyRoute="/integration"
             items={integrationItems}
-            pathname={pathname}
+            pathname={`/${pathname.split("/")[1]}`}
+            selectedItem={pathname.split("/")[2]}
           />
           <CustomItems
             title="Contact Us"

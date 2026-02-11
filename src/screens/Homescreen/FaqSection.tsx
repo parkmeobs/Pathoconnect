@@ -7,7 +7,7 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-[#ffece7] w-full py-12 sm:py-16 md:py-20">
+    <section className="bg-lightOrange w-full py-12 sm:py-16 md:py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center">
         
         {/* Heading */}

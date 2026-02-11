@@ -29,11 +29,12 @@ export async function POST(req: Request) {
       JSON.stringify({ message: "Registration successful" }),
       { status: 201 }
     );
-  } catch (error) {
-    return new Response(
-      JSON.stringify({ message: error.message }),
-      { status: 500 }
-    );
-  }
+  } catch (error: unknown) {
+  const err = error as Error;
+  return new Response(
+    JSON.stringify({ message: err.message }),
+    { status: 500 }
+  );
+}
 }
 

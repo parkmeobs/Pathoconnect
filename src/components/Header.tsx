@@ -28,8 +28,7 @@ function CustomItems({
   onClick?: () => void;
   selectedItem?: string;
 }) {
-  console.log("routetttt", route);
-  console.log("pathnametttt", pathname);
+ 
   const isActive =
     (route && pathname === route) || (dummyRoute && pathname === dummyRoute);
 
@@ -162,7 +161,6 @@ const blogItems = [
   href: `/blog/${slugify(item.label)}`,
 }));
 
-console.log(blogItems);
 
 const integrationItems = [
   { label: "Software Integration" },

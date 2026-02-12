@@ -39,7 +39,6 @@ export default async function BlogSlugPage({
 }) {
   const { slug } = await params;
 
-  console.log("slogfd", slug);
 
   return (
     <div className="flex min-h-screen flex-col bg-zinc-50 font-sans dark:bg-white">

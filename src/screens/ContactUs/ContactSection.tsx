@@ -51,13 +51,34 @@ export default function ContactSection() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(formData);
-    // TODO: Connect to backend API or email service
-    setSubmitted(true);
-    setFormData({ name: "", email: "", phone: "", message: "" });
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   console.log(formData);
+  //   // TODO: Connect to backend API or email service
+  //   setSubmitted(true);
+  //   setFormData({ name: "", email: "", phone: "", message: "" });
+  // };
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
+
+  const data = await res.json();
+
+  if (data.success) {
+    alert("Message sent successfully!");
+  } else {
+    alert("Something went wrong.");
+  }
+};
+
 
   return (
     <section className="max-w-7xl mx-auto px-10 sm:px-8 md:px-10 lg:px-1 py-20 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-18">

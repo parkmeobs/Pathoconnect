@@ -59,7 +59,7 @@ export default function ContactSection() {
   //   setFormData({ name: "", email: "", phone: "", message: "" });
   // };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
   const res = await fetch("/api/contact", {

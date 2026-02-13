@@ -39,8 +39,13 @@ function WHoAre() {
             </div>
           )}
           <div className="flex flex-col justify-center gap-4">
+            <div className="flex items-center gap-4 flex-row "
+            //  border-b-1 border-primary 
+             >
             <h1 className="text-2xl font-bold text-primary">{item.name}</h1>
-            <h2 className="text-2xl font-bold text-blue">{item.heading}</h2>
+            <div className="w-16 h-1 bg-primary rounded-full"></div>
+            </div>
+            <h2 className="text-[21px] font-bold text-blue">{item.heading}</h2>
             <p className="text-sm text-blue">{item.subheading}</p>
           </div>
           {index % 2 !== 0 && (

@@ -25,6 +25,18 @@
   background: #e85c41; /* Hover color */
 }
 
+/* Fix Chrome Autofill Styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #1b2b65 !important; /* blue-900 */
+  transition: background-color 5000s ease-in-out 0s;
+  /* box-shadow: 0 0 0px 1000px white inset !important; background color */
+  border: 1px solid #ccc !important;
+}
+
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

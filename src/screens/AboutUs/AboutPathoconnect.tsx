@@ -25,7 +25,7 @@ function AboutPathoconnect() {
               About <span className="text-primary">PathoConnect</span>
             </h1>
 
-            <p className="text-blue ">
+            <p className="text-blue font-[450] text-[16px] font-[Roboto] ">
               Patho Connect is a cutting-edge phlebotomy app designed to empower
               healthcare professionals in their vital blood collection duties.
               With its user-friendly interface and comprehensive features.

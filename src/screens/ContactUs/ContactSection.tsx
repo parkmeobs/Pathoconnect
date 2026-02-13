@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import ContactCard from "./ContactCard";
 import CustomInputField from "@/components/CustomInputField";
+import { log } from "console";
 
 const contactLocations = [
   {
@@ -35,6 +36,37 @@ const contactLocations = [
   },
 ];
 
+const sendEmailData =[
+  {
+    name: "Abhishek",
+    email: "abhishek@observancegroup.com",
+    phone:1234567890,
+    message: "Hello, I am interested in your services. Please contact me."
+  },{
+    name: "John Doe",
+    email: "john@observancegroup.com",
+    phone:1234567890,
+    message: "Hello, I am interested in your services. Please contact me."
+  },{
+    name: "Jane Smith",
+    email: "jane@observancegroup.com",
+    phone:1234567890,
+    message: "Hello, I am interested in your services. Please contact me."
+  },
+  {
+    name: "Alice Johnson",
+    email: "alice@observancegroup.com",
+    phone:1234567890,
+    message: "Hello, I am interested in your services. Please contact me."
+  },
+  {
+    name: "Bob Brown",
+    email: "bob@observancegroup.com",
+    phone:1234567890,
+    message: "Hello, I am interested in your services. Please contact me."
+  }
+]
+
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
@@ -62,6 +94,9 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
+  console.log(formData);
+    // for (const data1 of sendEmailData) {
+
   const res = await fetch("/api/contact", {
     method: "POST",
     headers: {
@@ -77,6 +112,7 @@ export default function ContactSection() {
   } else {
     alert("Something went wrong.");
   }
+// }
 };
 
 

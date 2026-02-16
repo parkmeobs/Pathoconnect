@@ -3,6 +3,8 @@ import { decrypt } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { BannerSection } from "@/screens/Homescreen/BannerSection";
 import { FaqSection } from "@/screens/Homescreen/FaqSection";
+import AllInOne from "@/screens/Homescreen/AllInOne";
+import ExceptionalFeature from "@/screens/Homescreen/ExceptionalFeature";
 
 export default async function Home() {
   const cookieStore = await cookies();
@@ -25,6 +27,8 @@ export default async function Home() {
     <div className="flex min-h-screen flex-col bg-zinc-50 font-sans bg-white">
       <main className="flex flex-1 flex-col pt-22  bg-white dark:bg-white">
         <BannerSection />
+        <AllInOne/>
+        <ExceptionalFeature/>
         <FaqSection />
       </main>
     </div>

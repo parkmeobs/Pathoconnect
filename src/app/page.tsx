@@ -5,6 +5,8 @@ import { BannerSection } from "@/screens/Homescreen/BannerSection";
 import { FaqSection } from "@/screens/Homescreen/FaqSection";
 import AllInOne from "@/screens/Homescreen/AllInOne";
 import ExceptionalFeature from "@/screens/Homescreen/ExceptionalFeature";
+import ImproveTat from "@/screens/Homescreen/ImproveTat";
+import OrderManagement from "@/screens/Homescreen/OrderManagement";
 
 export default async function Home() {
   const cookieStore = await cookies();
@@ -29,6 +31,8 @@ export default async function Home() {
         <BannerSection />
         <AllInOne/>
         <ExceptionalFeature/>
+        <ImproveTat/>
+        <OrderManagement/>
         <FaqSection />
       </main>
     </div>

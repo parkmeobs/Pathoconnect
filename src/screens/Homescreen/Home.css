@@ -1,0 +1,9 @@
+.customHover div, .customHover span{
+  transition: all ease .3s;
+}
+.customHover:hover div{
+  transform: translateX(135px);
+}
+.customHover:hover span{
+  transform: translateX(-40px);
+}

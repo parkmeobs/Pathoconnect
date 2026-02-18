@@ -3,6 +3,8 @@ import React from "react";
 import ExceptionalFeature from "@/assets/images/HomeScreenTab/ExceptionalFeature.png";
 import OrderDashboard from "@/assets/images/HomeScreenTab/OrderDashboard.png";
 import RealTimeStatus from "@/assets/images/HomeScreenTab/RealTimeStatus.png";
+import "./Home.css";
+
 
 const data = [
   {
@@ -50,6 +52,14 @@ function OrderManagement() {
           ))}
         </div>
       </div>
+      <button className="customHover max-w-3xs mt-4 h-12 px-6 duration-300 rounded-full font-bold border border-primary bg-[#e85c41] text-white hover:bg-white hover:text-[#e85c41] transition w-full sm:w-auto mx-auto  flex flex-row items-center justify-center group ">
+            <div className="bg-white group-hover:bg-primary rounded-full p-1 ml-2 mr-2 flex items-center justify-center">
+              <i
+                className={`bi bi-chevron-right text-primary group-hover:text-white   rounded-full  h-5 w-5 `}
+              ></i>
+            </div>
+            <span>Request a Demo</span>
+          </button>
     </div>
   );
 }

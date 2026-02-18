@@ -7,6 +7,9 @@ import AllInOne from "@/screens/Homescreen/AllInOne";
 import ExceptionalFeature from "@/screens/Homescreen/ExceptionalFeature";
 import ImproveTat from "@/screens/Homescreen/ImproveTat";
 import OrderManagement from "@/screens/Homescreen/OrderManagement";
+import Revolutionizing from "@/screens/Homescreen/Revolutionizing";
+import MakeLabHome from "@/screens/Homescreen/MakeLabHome";
+import SuccessStories from "@/screens/Homescreen/SuccessStories";
 
 export default async function Home() {
   const cookieStore = await cookies();
@@ -32,7 +35,11 @@ export default async function Home() {
         <AllInOne/>
         <ExceptionalFeature/>
         <ImproveTat/>
+        <MakeLabHome/>
         <OrderManagement/>
+        <Revolutionizing/>
+                <SuccessStories/>
+
         <FaqSection />
       </main>
     </div>

@@ -50,16 +50,16 @@ const data = [
 
 function SuccessStories() {
   return (
-    <div className="w-full  mx-auto px-4 py-10 sm:px-6 lg:px-2  ">
-      <div className="max-w-5xl mx-auto flex flex-col gap-4 items-center">
+    <div className="w-full  mx-auto px-4 py-20 sm:px-6 lg:px-2  ">
+      <div className="max-w-7xl mx-auto flex flex-col  items-center">
         <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-blue">
           <span className="text-primary">Success</span> Stories
         </h1>
-        <p className="text-blue">
+        <p className=" max-w-3xl mx-auto text-center text-[13px] sm:text-[15px] md:text-[16px] lg:text-[16px] text-blue mt-5">
           Uncover the experiences of our customers who have leveraged the power
           of Pathoconnect Lab Management Software
         </p>
-     <AutoSlider data={data} />
+        <AutoSlider data={data} />
       </div>
     </div>
   );

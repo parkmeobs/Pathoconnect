@@ -38,8 +38,7 @@ export default async function Home() {
         <MakeLabHome/>
         <OrderManagement/>
         <Revolutionizing/>
-                <SuccessStories/>
-
+        <SuccessStories/>
         <FaqSection />
       </main>
     </div>

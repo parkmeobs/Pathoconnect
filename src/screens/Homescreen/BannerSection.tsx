@@ -12,13 +12,13 @@ export function BannerSection() {
       <div className=" max-w-7xl   mx-auto   px-4 sm:px-6   py-20   grid   grid-cols-1 md:grid-cols-2   gap-10 md:gap-20   items-center">
         {/* Text */}
         <div className="flex flex-col gap-4 text-center md:text-left">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-black leading-snug">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-blue leading-snug">
             Simplifying{" "}
             <span className="text-[var(--color-primary)]">Phlebotomy</span>,
             Empowering Diagnostics
           </h1>
 
-          <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-xl mx-auto md:mx-0">
+          <p className="text-sm sm:text-base text-blue leading-relaxed max-w-xl  mx-auto md:mx-0">
             Pathoconnect enables seamless sample collection, real-time tracking,
             and operational efficiency for labs and diagnostic centers.
           </p>

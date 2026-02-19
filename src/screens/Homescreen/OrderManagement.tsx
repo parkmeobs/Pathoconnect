@@ -5,7 +5,6 @@ import OrderDashboard from "@/assets/images/HomeScreenTab/OrderDashboard.png";
 import RealTimeStatus from "@/assets/images/HomeScreenTab/RealTimeStatus.png";
 import "./Home.css";
 
-
 const data = [
   {
     id: 0,
@@ -33,7 +32,7 @@ const data = [
 function OrderManagement() {
   return (
     <div className="w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8  py-10 sm:py-10 md:py-15 lg:py-20 flex flex-col gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8  py-5 sm:py-5 md:py-15 lg:py-15 flex flex-col gap-10">
         <h1 className="text-3xl font-bold text-center mt-10 text-blue">
           <span className="text-primary">Order Management</span> Workflow
         </h1>
@@ -44,22 +43,33 @@ function OrderManagement() {
         </p>
         <div className="grid grid-cols-3 gap-4">
           {data.map((item) => (
-            <div key={item.id} className="flex flex-col gap-6 bg-[#ECF4FF] px-10 pt-10 pb-15 rounded-[15px]">
-              <Image src={item.image} alt={item.title} className="w-auto h-60 object-contain"  />
-              <h2 className="font-bold text-[17px] text-blue text-center">{item.title}</h2>
-              <p className="text-blue text-[14px] text-center">{item.description}</p>
+            <div
+              key={item.id}
+              className="flex flex-col gap-6 bg-[#ECF4FF] px-10 pt-10 pb-15 rounded-[15px]"
+            >
+              <Image
+                src={item.image}
+                alt={item.title}
+                className="w-auto h-60 object-contain"
+              />
+              <h2 className="font-bold text-[17px] text-blue text-center">
+                {item.title}
+              </h2>
+              <p className="text-blue text-[14px] text-center">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
       </div>
       <button className="customHover max-w-3xs mt-4 h-12 px-6 duration-300 rounded-full font-bold border border-primary bg-[#e85c41] text-white hover:bg-white hover:text-[#e85c41] transition w-full sm:w-auto mx-auto  flex flex-row items-center justify-center group ">
-            <div className="bg-white group-hover:bg-primary rounded-full p-1 ml-2 mr-2 flex items-center justify-center">
-              <i
-                className={`bi bi-chevron-right text-primary group-hover:text-white   rounded-full  h-5 w-5 `}
-              ></i>
-            </div>
-            <span>Request a Demo</span>
-          </button>
+        <div className="bg-white group-hover:bg-primary rounded-full p-1 ml-2 mr-2 flex items-center justify-center">
+          <i
+            className={`bi bi-chevron-right text-primary group-hover:text-white   rounded-full  h-5 w-5 `}
+          ></i>
+        </div>
+        <span>Request a Demo</span>
+      </button>
     </div>
   );
 }

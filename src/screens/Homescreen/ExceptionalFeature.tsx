@@ -72,7 +72,7 @@ function ExceptionalFeature() {
         Exceptional <span className="text-primary">Features</span> of Our Mobile
         Phlebotomy App
       </h1>
-      <div className="  flex flex-col sm:flex-col md:flex-row lg:flex-row gap-10 w-full ">
+      <div className="  flex flex-col sm:flex-col md:flex-row lg:flex-row gap-10 w-full mt-4 sm:mt-4 md:mt-5 lg:mt-10">
         <div className="flex flex-col flex-1">
           {features.map(
             (feature, index) =>
@@ -98,7 +98,7 @@ function ExceptionalFeature() {
         <Image
           src={ExceptionalFeaturee}
           alt="Exceptional Feature"
-          className="w-auto h-120 "
+          className="w-auto h-80  sm:h-80 md:h-110 lg:h-140 object-contain"
         />
         </div>
         <div className="flex flex-col flex-1">

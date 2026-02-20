@@ -50,7 +50,7 @@ export default function Footer() {
           {/* Button */}
           <Link
             href="/contact-us"
-            className="inline-block max-w-3xl mt-4 border border-white px-6 py-2 rounded-full sm:w-fit md:mx-0 hover:bg-white hover:text-black transition"
+            className="inline-block max-w-fit mx-auto mt-4 border border-white px-6 py-2 rounded-full sm:w-fit md:mx-0 hover:bg-white hover:text-black transition"
           >
             Contact Us
           </Link>

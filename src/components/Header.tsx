@@ -205,7 +205,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full py-1.5 bg-white shadow z-50">
-      <div className="max-w-7xl mx-auto sm:px-10 md:px-12 gap-4 flex items-center justify-between  h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-10 md:px-12 gap-4 flex items-center justify-between  h-20">
         {/* Logo */}
         <Link href="/">
           <Image
@@ -213,7 +213,7 @@ export default function Header() {
             alt="Logo"
             // width={180}
             // height={40}
-            className="w-auto h-5 sm:h-8 md:h-9 lg:h-12 object-contain"
+            className="w-auto h-6 sm:h-8 md:h-8 lg:h-12 object-contain"
           />
         </Link>
 
@@ -252,7 +252,11 @@ export default function Header() {
         {/* Phone Icon (desktop) */}
         <div className="relative group cursor-pointer h-full  flex items-center">
           <div className="hidden md:block">
-            <Image src={Phone} alt="Phone" width={36} height={36} />
+            <Image
+              src={Phone}
+              alt="Phone"
+              className="w-auto h-6 sm:h-8 md:h-7 lg:h-8 object-contain"
+            />
           </div>
           {phoneNumber.length > 0 && (
             <div className="absolute left-0 top-full mt-2 invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-white shadow-lg rounded-md min-w-[220px] transition-all duration-200">
@@ -267,12 +271,12 @@ export default function Header() {
             </div>
           )}
         </div>
-        <button
+        {/* <button
           onClick={handleLogout}
           className="hidden md:flex items-center justify-center bg-[#1b2b65] p-2 rounded-full hover:bg-[#162254] transition cursor-pointer"
         >
           <Image src={LogoutImage} alt="logout" width={20} height={20} />
-        </button>
+        </button> */}
 
         {/* Hamburger */}
         <button

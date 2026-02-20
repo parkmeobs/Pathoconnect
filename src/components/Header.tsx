@@ -9,7 +9,12 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import RealTime from "@/assets/images/HomeScreenTab/RealTime.png";
-import { blogItems, integrationItems, productItems } from "@/utils/CommonFunction/CommanData";
+import {
+  blogItems,
+  integrationItems,
+  productItems,
+} from "@/utils/CommonFunction/CommanData";
+import { AnyObject } from "mongoose";
 
 function CustomItems({
   title,
@@ -20,23 +25,7 @@ function CustomItems({
   mobile = false,
   onClick,
   selectedItem,
-}: {
-  title: string;
-  items?: {
-    label: string;
-    href: string;
-    slug: string;
-    icon: StaticImageData;
-    color: [string, string];
-    description: string;
-  }[];
-  route?: string;
-  dummyRoute?: string;
-  pathname: string;
-  mobile?: boolean;
-  onClick?: () => void;
-  selectedItem?: string;
-}) {
+}: AnyObject) {
   const isActive =
     (route && pathname === route) || (dummyRoute && pathname === dummyRoute);
 
@@ -56,7 +45,7 @@ function CustomItems({
         ) : (
           <>
             <p className="font-semibold text-[#1b2b65] py-2">{title}</p>
-            {items.map((item, i) => (
+            {items.map((item: { label: string; href: string }, i: number) => (
               <Link
                 key={i}
                 href={item.href}
@@ -108,62 +97,83 @@ function CustomItems({
       {title === "Product" ? (
         <div className="w-full   py-8 left-0 bg-white absolute top-full mt-2 invisible opacity-0 group-hover:visible group-hover:opacity-100  shadow-lg rounded-md  transition-all duration-200">
           <div className="max-w-5xl mx-auto grid grid-cols-2 gap-4  px-5 ">
-            {items.map((item, i) => (
-              <div key={i}
-                className="group w-full h-full border rounded-md flex px-6 py-8"
-                style={{
-                  backgroundColor: item?.color[0],
-                  borderColor: `${item?.color[1]}80`,
-                }}
-              >
-                <Image
-                  src={item.icon}
-                  alt={item.label}
-                  className="inline-block  w-auto h-10"
-                />
+            {items.map(
+              (
+                item: {
+                  label: string;
+                  icon: string;
+                  color: [string, string];
+                  description: string;
+                  href: string;
+                },
+                i: number,
+              ) => (
+                <div
+                  key={i}
+                  className="group w-full h-full border rounded-md flex px-6 py-8"
+                  style={{
+                    backgroundColor: item?.color[0],
+                    borderColor: `${item?.color[1]}80`,
+                  }}
+                >
+                  <Image
+                    src={item.icon}
+                    alt={item.label}
+                    className="inline-block  w-auto h-10"
+                  />
 
-                <div>
-                  <div className="h-2/3">
-                    <h1 className="text-md font-semibold text-blue px-4 py-2">
-                      {item.label}
-                    </h1>
-                    <p className="max-w-3xl text-sm text-gray-500 px-4">
-                      {item?.description}
-                    </p>
+                  <div>
+                    <div className="h-2/3">
+                      <h1 className="text-md font-semibold text-blue px-4 py-2">
+                        {item.label}
+                      </h1>
+                      <p className="max-w-3xl text-sm text-gray-500 px-4">
+                        {item?.description}
+                      </p>
+                    </div>
+
+                    <Link
+                      href={item.href}
+                      style={{
+                        borderColor: item?.color[1],
+                        color: item?.color[1],
+                      }}
+                      className="ml-4 text-sm rounded-full px-5 py-1 mt-4 transition border-2 inline-flex items-center group-hover:visible group-hover:opacity-100"
+                    >
+                      Know More
+                      <i className="bi bi-arrow-right ml-1"></i>
+                    </Link>
                   </div>
-
-                  <Link
-                    href={item.href}
-                    style={{
-                      borderColor: item?.color[1],
-                      color: item?.color[1],
-                    }}
-                    className="ml-4 text-sm rounded-full px-5 py-1 mt-4 transition border-2 inline-flex items-center group-hover:visible group-hover:opacity-100"
-                  >
-                    Know More
-                    <i className="bi bi-arrow-right ml-1"></i>
-                  </Link>
                 </div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
         </div>
       ) : (
         items.length > 0 && (
           <div className="absolute left-0 top-full mt-2 invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-white shadow-lg rounded-md min-w-[220px] transition-all duration-200">
-            {items.map((item, index) => (
-              <Link
-                key={index}
-                href={item.href}
-                className={`block px-4 py-2 hover:bg-gray-100 ${
-                  item.slug === selectedItem
-                    ? "text-[#e85c41] font-medium"
-                    : "text-[#1b2b65] font-normal"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {items.map(
+              (
+                item: {
+                  label: string;
+                  href: string;
+                  slug?: string;
+                },
+                index: number,
+              ) => (
+                <Link
+                  key={index}
+                  href={item.href}
+                  className={`block px-4 py-2 hover:bg-gray-100 ${
+                    item.slug === selectedItem
+                      ? "text-[#e85c41] font-medium"
+                      : "text-[#1b2b65] font-normal"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ),
+            )}
           </div>
         )
       )}
@@ -179,8 +189,6 @@ const phoneNumber = [
     label: "India : +91 9910272266",
   },
 ];
-
-
 
 export default function Header() {
   const pathname = usePathname();

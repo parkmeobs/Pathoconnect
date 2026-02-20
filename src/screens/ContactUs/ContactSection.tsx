@@ -117,7 +117,7 @@ export default function ContactSection() {
 
 
   return (
-    <section className="max-w-7xl mx-auto px-10 sm:px-8 md:px-10 lg:px-1 py-20 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-18">
+    <section className="max-w-7xl mx-auto px-10 sm:px-8 md:px-10 lg:px-10 py-20 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-18">
       {/* Left Column: Contact Info */}
       <div className="space-y-6">
         <div>

@@ -91,3 +91,19 @@ body {
 #anurag{
 
 }
+
+.slick-dots li button::before {
+  font-size: 10px !important ;  
+  /* width: 18px;
+  height: 18px; */
+}
+
+/* Increase clickable area */
+.slick-dots li {
+  margin: 0 6px;     /* spacing between dots */
+}
+
+/* Optional: active dot bigger */
+.slick-dots li.slick-active button:before {
+  font-size: 14px !important;
+}

@@ -164,9 +164,9 @@ const tabData = [
 function AllInOne() {
   const [activeTab, setActiveTab] = React.useState(0);
   return (
-    <div className="w-full  mx-auto px-4 py-5 sm:px-6 lg:px-2  ">
+    <div className="w-full  mx-auto px-4 pt-0 sm:pt-0 md:pt-5 lg:pt-10 pb-5  sm:px-6 lg:px-2  ">
       <div className="max-w-5xl mx-auto flex flex-col gap-4">
-        <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-blue text-center mt-10">
+        <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-blue text-center ">
           Patho<span className="text-primary">connect</span> - All in one
           solution
         </h1>
@@ -247,7 +247,7 @@ function AllInOne() {
               //   src={CrmDashboard}
               src={tabData[activeTab].image}
               alt={tabData[activeTab].contentHeading}
-              className="w-full h-150 object-contain"
+              className="w-full h-80 sm:h-80 md:h-100 lg:h-150 object-contain"
             />
           </div>
         </div>

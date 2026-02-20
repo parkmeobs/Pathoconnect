@@ -50,7 +50,7 @@ const AutoSlider = ({ data }: Props) => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto ">
+    <div className="max-w-6xl mx-auto  ">
       <Slider {...settings}>
         {data.map((item) => (
           <div key={item.id} className="px-3 py-10">

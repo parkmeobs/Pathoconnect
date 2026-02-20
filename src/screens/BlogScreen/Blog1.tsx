@@ -25,7 +25,7 @@ export default function Blog1() {
         </h1>
 
         {/* Content Container */}
-        <div className="w-full bg-white/40 backdrop-blur-sm rounded-2xl p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-10">
+        <div className="w-full bg-white/40 backdrop-blur-sm rounded-2xl p-6 sm:p-8 lg:p-6 flex flex-col lg:flex-row items-center gap-10">
           {/* Left Content */}
           <div className="max-w-2xl flex flex flex-col gap-6 text-center lg:text-left  p-6 sm:p-8 lg:p-12">
             <h2 className="text-blue text-xl sm:text-2xl lg:text-2.5xl font-medium">
@@ -43,8 +43,19 @@ export default function Blog1() {
               {featureList.map((feature, index) => (
                 <p
                   key={index}
-                  className="text-blue bg-blue/5 backdrop-blur-sm rounded-2xl rounded-xl px-4 py-3 text-md hover:shadow-lg transition"
-                  // className="text-blue border border-blue rounded-xl px-4 py-3 text-md "
+                  className="
+                    bg-blue/15
+                    backdrop-blur-2xl
+                    border border-white/30
+                    shadow-[0_8px_32px_0_rgba(31,38,135,0.15)]
+                    rounded-2xl
+                    px-4 py-3
+                    text-[14px]
+                    text-blue/90
+                    transition-all
+                    duration-300
+                    hover:scale-105
+                  "
                 >
                   {feature.name}
                 </p>
@@ -61,7 +72,7 @@ export default function Blog1() {
             <Image
               src={HomeScreenMobileImage}
               alt="Mobile App Preview"
-              className="w-64 sm:w-80 lg:w-96 h-auto"
+              className="w-70 sm:w-80 md:w-80 lg:w-96 h-auto"
               priority
             />
           </div>

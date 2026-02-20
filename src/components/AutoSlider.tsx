@@ -21,27 +21,21 @@ const AutoSlider = ({ data }: Props) => {
     dots: true,
     infinite: true,
     speed: 600,
-      slidesToShow: 3,        // 👈 4 ek sath visible
+    slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,         // 👈 auto slide ON
-    autoplaySpeed: 2000,    // 2 sec
-    arrows: false,          // optional
-    pauseOnHover: true, 
+    autoplay: true,
+    autoplaySpeed: 2500,
+    arrows: false,
+    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 768,
         settings: {
           slidesToShow: 2,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
         },
@@ -50,20 +44,21 @@ const AutoSlider = ({ data }: Props) => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto  ">
+    <div className="max-w-full  mx-auto px-8 sm:px-8 md:px-4 lg:px-2  ">
       <Slider {...settings}>
         {data.map((item) => (
-          <div key={item.id} className="px-3 py-10">
-            <div className="h-[300px] w-full flex flex-col justify-center items-center p-6 rounded-lg shadow-md bg-white">
-              <div className="flex gap-2">
-                <p className="text-blue font-semibold">
+          <div key={item.id} className="px-2 sm:px-3 py-6 sm:py-10">
+            <div className="min-h-[250px] w-full flex flex-col justify-between p-5 sm:p-6 rounded-2xl shadow-md bg-white">
+              <div className="flex flex-col items-center gap-1">
+                <p className="text-primary font-semibold text-sm sm:text-base">
                   {item.country}
                 </p>
-                <p className="text-blue font-semibold">
+                <p className="text-blue font-semibold text-sm sm:text-base">
                   {item.customerName}
                 </p>
               </div>
-              <p className="text-center text-gray-600 mt-2 text-sm">
+
+              <p className="text-center text-gray-600 mt-4 text-xs sm:text-sm leading-relaxed">
                 {item.feedback}
               </p>
             </div>

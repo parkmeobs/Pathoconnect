@@ -32,36 +32,41 @@ const data = [
 function ImproveTat() {
   return (
     <div className="w-full  py-10 ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8 ">
+      <div className="max-w-7xl mx-auto px-8 sm:px-6 md:px-8 lg:px-8 ">
         <h1 className="text-3xl font-bold text-center mt-10 text-blue">
           Improve <span className="text-primary">TAT</span> for Specimen
           Collections
         </h1>
-        <div className="flex  gap-10 mt-10">
-          <div>
+        <div className="flex flex-col lg:flex-row gap-6 sm:gap-9 md:gap-10 lg:gap-12 mt-10 items-center lg:items-start">
+          {/* Left Content */}
+          <div className="w-full lg:w-1/2">
             {data.map((item) => (
-              <div key={item.id} className="mb-10 flex items-start max-w-4xl">
+              <div key={item.id} className="mb-8 flex items-start max-w-full">
                 <Image
                   src={item.icon}
                   alt={item.title}
-                  className="inline-block mr-4 w-auto h-10"
+                  className="mr-4 w-8 h-8 sm:w-10 sm:h-10 object-contain"
                 />
+
                 <div className="flex flex-col gap-2">
-                  <h2 className="text-[17px] font-semibold inline-block text-blue">
+                  <h2 className="text-[16px] sm:text-[18px] font-semibold text-blue">
                     {item.title}
                   </h2>
-                  <p className="text-blue text-[14px] ">{item.description}</p>
+                  <p className="text-blue text-[13px] sm:text-[15px] leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
-          <div>
+
+          {/* Right Image */}
+          <div className="w-full lg:w-1/2 flex justify-center">
             <Image
               src={ImproveImg}
               alt="Improve TAT"
-              width={800}
-              height={400}
-              className="mx-auto mt-10"
+              className="w-full max-w-md sm:max-w-lg lg:max-w-xl h-auto"
+              priority
             />
           </div>
         </div>

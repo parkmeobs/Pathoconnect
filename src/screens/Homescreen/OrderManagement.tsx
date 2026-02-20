@@ -32,30 +32,40 @@ const data = [
 function OrderManagement() {
   return (
     <div className="w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8  py-5 sm:py-5 md:py-15 lg:py-15 flex flex-col gap-10">
-        <h1 className="text-3xl font-bold text-center mt-10 text-blue">
-          <span className="text-primary">Order Management</span> Workflow
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8  py-5 sm:py-5 md:py-15 lg:py-15 flex flex-col gap-5">
+        <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mt-10 text-blue">
+          <span className="text-primary ">Order Management</span> Workflow
         </h1>
         <p className="text-blue max-w-4xl mx-auto text-center  text-[13px] sm:text-[15px] md:text-[16px] lg:text-[16px]">
           {
             "Pathoconnect can be a valuable tool for phlebotomists and other healthcare professionals who need to collect blood and other samples. It can help them to improve their skills, stay up-to-date on the latest trends, and prepare for their future tech updates."
           }
         </p>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-8">
           {data.map((item) => (
             <div
               key={item.id}
-              className="flex flex-col gap-6 bg-[#ECF4FF] px-10 pt-10 pb-15 rounded-[15px]"
+              className="w-full max-w-sm mx-auto flex flex-col gap-8 sm:gap-8
+                 bg-[#ECF4FF] 
+                 px-6 sm:px-8 lg:px-10 
+                 py-8 sm:py-10 
+                 rounded-2xl 
+                 transition-all duration-300 
+                 hover:shadow-xl
+                 items-center"
+                 
             >
               <Image
                 src={item.image}
                 alt={item.title}
-                className="w-auto h-60 object-contain"
+                className="w-auto h-1/2 sm:h-48 md:h-52 lg:h-56 object-contain"
               />
-              <h2 className="font-bold text-[17px] text-blue text-center">
+
+              <h2 className="font-bold text-base sm:text-lg text-blue text-center">
                 {item.title}
               </h2>
-              <p className="text-blue text-[14px] text-center">
+
+              <p className="text-blue text-sm sm:text-base text-center leading-relaxed">
                 {item.description}
               </p>
             </div>
